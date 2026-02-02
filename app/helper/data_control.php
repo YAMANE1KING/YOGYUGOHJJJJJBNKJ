@@ -217,16 +217,14 @@ function new_ticket($user){
 
 function countRow($data){
     global $conn;
-    $where    = "";
-    if( $data["where"] ):
+    $execute  = [];
+    if( isset($data["where"]) && !empty($data["where"]) ):
         $where    = "WHERE ";
         foreach ($data["where"] as $key => $value) {
             $where.=" $key=:$key AND ";
             $execute[$key]=$value;
         }
         $where    = substr($where,0,-3);
-    else:
-        $execute[]= "";
     endif;
     $row  = $conn->prepare("SELECT * FROM {$data['table']} $where ");
     $row-> execute($execute);
@@ -240,8 +238,8 @@ function getRows($data){
     $order    = "";
     $order    = "";
     $limit    = "";
-    $execute[]= "";
-    if( $data["where"] ):
+    $execute  = [];
+    if( isset($data["where"]) && !empty($data["where"]) ):
         $where    = "WHERE ";
         foreach ($data["where"] as $key => $value) {
             $where.=" $key=:$key AND ";
