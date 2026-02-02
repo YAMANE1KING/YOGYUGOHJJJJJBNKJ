@@ -189,7 +189,7 @@ $panel_orders = countRow(["table"=>"orders"]);
     $currencies_q->execute(array("status" => 1));
     $currencies  = $currencies_q->fetchAll();
 
-    $ref_payouts_q  = $conn->prepare("SELECT * FROM referral WHERE r_p_code=:r_p_code ");
+    $ref_payouts_q  = $conn->prepare("SELECT * FROM referral_payouts WHERE r_p_code=:r_p_code ");
     $ref_payouts_q->execute(array("r_p_code" => $user['ref_code'] ?? ''));
     $ref_payouts  = $ref_payouts_q->fetchAll();
 
