@@ -1,15 +1,6 @@
 <?php
-// Build trigger: 2026-02-03 05:07
-if (function_exists('opcache_reset')) {
-    opcache_reset();
-}
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-
-if (!file_exists(__DIR__.'/vendor/autoload.php')) {
-    die('Composer autoload.php not found. Please run composer install.');
-}
+error_reporting(0);
+ini_set('display_errors', 0);
 
 require __DIR__.'/vendor/autoload.php';
 use PHPMailer\PHPMailer\PHPMailer;
