@@ -6,6 +6,7 @@ RUN apt-get update && apt-get install -y \
     libgmp-dev \
     git \
     unzip \
+    && docker-php-ext-configure gmp \
     && docker-php-ext-install pdo pdo_pgsql pgsql gmp
 
 # Enable Apache Rewrite Module
