@@ -10,7 +10,9 @@ if (!file_exists(__DIR__.'/vendor/autoload.php')) {
 require __DIR__.'/vendor/autoload.php';
 use PHPMailer\PHPMailer\PHPMailer;
 $mail = new PHPMailer;
-require __DIR__.'/app/init.php'; 
+require __DIR__.'/app/init.php';if (function_exists('opcache_reset')) {
+    opcache_reset();
+}
 require_once "pro.php";
 
 ?>
