@@ -14,7 +14,8 @@
         "ext-pdo": "*",
         "ext-pgsql": "*",
         "ext-pdo_pgsql": "*",
-        "ext-json": "*"
+        "ext-json": "*",
+        "ext-gmp": "*"
     },
     "autoload": {
         "psr-4": {
@@ -24,7 +25,7 @@
     "config": {
         "optimize-autoloader": true,
         "platform": {
-            "php": "8.1"
+            "php": "8.2"
         }
     }
 }
