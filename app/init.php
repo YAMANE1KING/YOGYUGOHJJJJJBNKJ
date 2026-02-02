@@ -5,6 +5,30 @@ ob_start();
 
 $config = require __DIR__.'/config.php';
 
+$first_route  = explode('?',$_SERVER["REQUEST_URI"]);
+if (isset($first_route[1])) {
+    $gets = explode('&',$first_route[1]);
+    foreach ($gets as $get) {
+        $get = explode('=',$get);
+        if (isset($get[1])) {
+            $_GET[$get[0]] = $get[1];
+        }
+    }
+}
+$routes = array_filter( explode('/',$first_route[0]) );
+$route = [];
+if( SUBFOLDER === true ){
+    array_shift($routes);
+    $route = array_values($routes);
+}else {
+    foreach ($routes as $index => $value):
+        $route[$index-1] = $value;
+    endforeach;
+}
+
+
+// Route already defined in init.php
+
 try {
   $db_options = "options='--client_encoding=".$config["db"]["charset"]."'";
   if (isset($_ENV['DB_SSL']) && $_ENV['DB_SSL'] == 'true') {

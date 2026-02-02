@@ -25,22 +25,7 @@
 
 
 
-$first_route  = explode('?',$_SERVER["REQUEST_URI"]);
-$gets         = explode('&',$first_route[1]);
-  foreach ($gets as $get) {
-    $get = explode('=',$get);
-    $_GET[$get[0]]  = $get[1];
-  }
-$routes       = array_filter( explode('/',$first_route[0]) );
-
-  if( SUBFOLDER === true ){
-    array_shift($routes);
-    $route = $routes;
-  }else {
-    foreach ($routes as $index => $value):
-      $route[$index-1] = $value;
-    endforeach;
-  }
+// Route already defined in init.php
 $panel_orders = countRow(["table"=>"orders"]);
 
   if( $_GET["lang"] && $user['auth'] != 1 ):
