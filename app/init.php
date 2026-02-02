@@ -43,7 +43,7 @@ try {
   die("Database Connection Error: " . $e->getMessage());
 }
 
-if( $_COOKIE["u_id"] && $_COOKIE["u_login"] && $_COOKIE["u_password"] ):
+if( isset($_COOKIE["u_id"]) && isset($_COOKIE["u_login"]) && isset($_COOKIE["u_password"]) ):
 
   $row      = $conn->prepare("SELECT * FROM clients WHERE client_id=:id");
   $row      ->execute(array("id"=>$_COOKIE["u_id"] ));
@@ -52,10 +52,11 @@ if( $_COOKIE["u_id"] && $_COOKIE["u_login"] && $_COOKIE["u_password"] ):
   $password = $row["password"];
 
   if( @$_COOKIE["u_password"] == $password ):
+    $access = json_decode($row["access"],true);
     $_SESSION["msmbilisim_userlogin"]      = 1;
     $_SESSION["msmbilisim_userid"]         = $row["client_id"];
     $_SESSION["msmbilisim_userpass"]       = $row["password"];
-      if( $access["admin_access"] ):
+      if( isset($access["admin_access"]) && $access["admin_access"] ):
         $_SESSION["msmbilisim_adminlogin"] = 1;
       endif;
   else:
@@ -72,7 +73,7 @@ if( $_COOKIE["u_id"] && $_COOKIE["u_login"] && $_COOKIE["u_password"] ):
 
 endif;
 
-if( $_COOKIE["a_id"] && $_COOKIE["a_login"] && $_COOKIE["a_password"] ):
+if( isset($_COOKIE["a_id"]) && isset($_COOKIE["a_login"]) && isset($_COOKIE["a_password"]) ):
 
   $admin      = $conn->prepare("SELECT * FROM admins WHERE admin_id=:id");
   $admin      ->execute(array("id"=>$_COOKIE["a_id"] ));
@@ -84,7 +85,7 @@ if( $_COOKIE["a_id"] && $_COOKIE["a_login"] && $_COOKIE["a_password"] ):
     $_SESSION["msmbilisim_adminslogin"]      = 1;
     $_SESSION["msmbilisim_adminid"]         = $admin["admin_id"];
     $_SESSION["msmbilisim_adminpass"]       = $admin["password"];
-      if( $access["admin_access"] ):
+      if( isset($access["admin_access"]) && $access["admin_access"] ):
         $_SESSION["msmbilisim_adminlogin"] = 1;
       endif;
   else:
@@ -133,17 +134,15 @@ define('THEME', $settings["site_theme"]);
 $loader   = new \Twig\Loader\FilesystemLoader(__DIR__.'/views/'.THEME);
 $twig     = new \Twig\Environment($loader, ['autoescape' => 'html']);
 
-$user = $conn->prepare("SELECT * FROM clients WHERE client_id=:id");
-$user->execute(array("id"=>$_SESSION["msmbilisim_userid"] ));
-$user = $user->fetch(PDO::FETCH_ASSOC);
-$user['auth']     = $_SESSION["msmbilisim_userlogin"];
-if(  $user["auth"]  != 1):
+$user_query = $conn->prepare("SELECT * FROM clients WHERE client_id=:id");
+$user_query->execute(array("id"=>$_SESSION["msmbilisim_userid"] ?? 0 ));
+$user = $user_query->fetch(PDO::FETCH_ASSOC) ?: [];
+$user['auth']     = $_SESSION["msmbilisim_userlogin"] ?? 0;
+if(  ($user["auth"] ?? 0)  != 1):
 
-$user = $conn->prepare("SELECT * FROM clients WHERE passwordreset_token=:id");
-$user->execute(array("id"=> $route[1] ));
-$user = $user->fetch(PDO::FETCH_ASSOC);
-
-
+$user_reset = $conn->prepare("SELECT * FROM clients WHERE passwordreset_token=:id");
+$user_reset->execute(array("id"=> $route[1] ?? '' ));
+$user = $user_reset->fetch(PDO::FETCH_ASSOC) ?: [];
 endif; 
 
 $admin = $conn->prepare("SELECT * FROM admins WHERE admin_id=:id");
