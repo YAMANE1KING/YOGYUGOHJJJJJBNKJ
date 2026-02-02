@@ -5,7 +5,7 @@ services:
     region: frankfurt
     plan: free
     branch: main
-    repo: https://github.com/Start-Games/SMM-SC
+    repo: https://github.com/YAMANE1KING/YOGYUGOHJJJJJBNKJ
     dockerCommand: apache2-foreground
     envVars:
       - key: DB_HOST
