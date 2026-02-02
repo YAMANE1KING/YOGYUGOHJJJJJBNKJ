@@ -11,7 +11,7 @@ define('URL', $_ENV['SITE_URL'] ?? 'http://localhost:8000');
 define('STYLESHEETS_URL', $_ENV['SITE_URL'] ?? 'http://localhost:8000');
 
 error_reporting(E_ALL);
-ini_set('display_errors', 0); // Hide errors in production
+ini_set('display_errors', 1); // Show errors for debugging
 date_default_timezone_set('Asia/Kolkata'); // Consider making this configurable too
 
 return [
