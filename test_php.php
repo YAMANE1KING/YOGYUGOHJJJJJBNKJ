@@ -1,4 +1,9 @@
 <?php
+if (function_exists('opcache_reset')) {
+    opcache_reset();
+    echo "OPcache reset successfully.<br>";
+}
+
 require __DIR__.'/vendor/autoload.php';
 $config = require __DIR__.'/app/config.php';
 
