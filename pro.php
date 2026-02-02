@@ -1,5 +1,5 @@
-<?php 
-
+<?php
+// BUILD MARKER: 2026-02-03 05:22
 // Route already defined in init.php
 $panel_orders = countRow(["table"=>"orders"]);
 
@@ -291,7 +291,7 @@ $panel_orders = countRow(["table"=>"orders"]);
             'ref_content' => $ref_content,
             'payouts' => $payouts,
             'currencies' => $currencies,
-            'currency' => $currency,
+            'currency' => $user['currency'] ?? '1',
             'panel_info' => $panel_info,
             'ref_payouts' => $ref_payouts,
             'panel_orders' => $panel_orders,
