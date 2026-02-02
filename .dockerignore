@@ -1,0 +1,15 @@
+vendor
+.git
+.github
+.vscode
+*.sql
+db_test.php
+db_test.php
+seed.pg.sql
+schema.pg.sql
+closestar.sql
+Installation Guide.txt
+README.md
+Dockerfile
+render.yaml
+.dockerignore
