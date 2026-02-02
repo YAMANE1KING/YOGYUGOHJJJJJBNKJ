@@ -12,13 +12,13 @@ echo "CWD: " . getcwd() . "<br>";
 echo "PATH constant (from config): " . (defined('PATH') ? PATH : 'NOT DEFINED') . "<br>";
 echo "REQUEST_URI: " . $_SERVER['REQUEST_URI'] . "<br>";
 
-echo "<h4>Inspecting app/init.php:</h4>";
-$init_file = __DIR__.'/app/init.php';
-if (file_exists($init_file)) {
-    $content = file_get_contents($init_file);
+echo "<h4>Inspecting app/controller/auth.php:</h4>";
+$auth_file = __DIR__.'/app/controller/auth.php';
+if (file_exists($auth_file)) {
+    $content = file_get_contents($auth_file);
     echo "<pre>" . htmlspecialchars(substr($content, 0, 2000)) . "</pre>";
 } else {
-    echo "app/init.php NOT FOUND at $init_file";
+    echo "app/controller/auth.php NOT FOUND at $auth_file";
 }
 
 
