@@ -203,7 +203,7 @@ $panel_orders = countRow(["table"=>"orders"]);
         $menus  = $menus_q->fetchAll();
     endif;
 
-    $panels_q = $conn->prepare("SELECT * FROM panels INNER JOIN clients ON clients.client_id=panels.client_id WHERE panels.client_id=:client_id ORDER BY panels.panel_id DESC");
+    $panels_q = $conn->prepare("SELECT * FROM childpanels INNER JOIN clients ON clients.client_id=childpanels.client_id WHERE childpanels.client_id=:client_id ORDER BY childpanels.id DESC");
     $panels_q->execute(array("client_id" => $user["client_id"] ?? 0));
     $panels = $panels_q->fetchAll();
 
