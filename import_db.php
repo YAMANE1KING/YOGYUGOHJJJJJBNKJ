@@ -52,8 +52,8 @@ foreach ($files as $name => $sqlFile) {
             $conn->exec($query);
             $successCount++;
         } catch (PDOException $e) {
-            // Some errors like "table already exists" or "duplicate key" might be okay
             $errorCount++;
+            echo "<div style='color:orange; font-size: 10px'>Error on query: " . htmlspecialchars(substr($query, 0, 50)) . "... -> " . $e->getMessage() . "</div>";
         }
     }
 
