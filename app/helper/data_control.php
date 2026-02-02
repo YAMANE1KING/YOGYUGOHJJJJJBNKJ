@@ -218,6 +218,7 @@ function new_ticket($user){
 function countRow($data){
     global $conn;
     $execute  = [];
+    $where    = "";
     if( isset($data["where"]) && !empty($data["where"]) ):
         $where    = "WHERE ";
         foreach ($data["where"] as $key => $value) {

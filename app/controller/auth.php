@@ -114,15 +114,7 @@ $order    = $smmapi->action(array('action'=>'check','password'=>$pass,'mail'=>$r
         $update = $conn->prepare("UPDATE clients SET login_date=:date, login_ip=:ip WHERE client_id=:c_id ");
         $update->execute(array("c_id"=>$row["client_id"],"date"=>date("Y.m.d H:i:s"),"ip"=>GetIP() ));
     }
-
-
-
-
-
-
-
-
-
+  }
 } else {
 
 
