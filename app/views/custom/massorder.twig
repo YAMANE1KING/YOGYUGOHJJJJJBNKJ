@@ -1,0 +1,50 @@
+{% include 'ht.twig' %}
+
+
+
+<div class="app-content blog-inner">
+  <div class="bi-head-content">
+                    
+                </div>
+    <div class="container">
+       <div class="bi-cat-wrapper">
+                        <a href="#" class="bi-cat">
+                            New Order
+                        </a>
+                    </div>
+                    <div class="bi-title">
+                        <h1>Mass Order</h1>
+                    </div>
+        <section class="bi-head-wrapper">
+            <div class="bi-head-box">
+                <div class="bi-head-bg">
+                   
+                </div>
+                
+            </div>
+        </section>
+     
+        <section class="blog-content">
+            <div class="card card-border">
+                <div class="card-body p-4">
+                    <div class="bi-content">
+                    <form  method="post" action="/massorder">
+                                                            <div class="form-group">
+                        <label for="links" class="control-label" style="padding-bottom: 16px;">One order per line in format</label>
+                       <textarea type="text" class="form-control" id="mass" name="mass" rows="15" value="{{ data['mass'] }}" placeholder="service_id | link | quantity"></textarea>
+                    </div>
+                    <input type="hidden" name="_csrf" value="XGnQadxsd9LCEbotBQuQyF9Cm0tpriO05xKdYmhJwKcDUIFYiwsBgoN2jE9EStu6BxvEfTnFZ-uGQ_NVAxuaxQ==">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+                  </div>
+                </div>
+            </div>
+        </section>
+ 
+    </div>
+</div>
+
+
+
+
+{% include 'ftd.twig' %}

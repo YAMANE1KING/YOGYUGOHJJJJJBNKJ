@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: smmsimba
+    env: docker
+    region: frankfurt
+    plan: free
+    branch: main
+    repo: https://github.com/Start-Games/SMM-SC
+    dockerCommand: apache2-foreground
+    envVars:
+      - key: DB_HOST
+        sync: false
+      - key: DB_NAME
+        sync: false
+      - key: DB_USER
+        sync: false
+      - key: DB_PASS
+        sync: false
+      - key: SITE_URL
+        sync: false

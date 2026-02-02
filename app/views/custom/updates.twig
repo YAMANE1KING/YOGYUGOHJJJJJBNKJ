@@ -1,0 +1,116 @@
+{% include 'ht.twig' %}
+
+
+
+<div class="app-content">
+
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-lg-10"> 
+      <div class="agr">
+      <div class="row">
+       
+         <div class="col-md-5">
+        <div class="orders-nav-link op-search-box">
+						<div class="icon">
+							<i class="ri-search-line"></i>
+						</div>
+						<form action="/updates" method="get">
+							<input type="text" name="search" value="" placeholder="Search">
+
+
+						</form>
+        </div> </div>
+                <div class="col-md-3 offset-md-4">
+
+{#                            <div class="dropdown">#}
+{#                  <button class="select-button dropdown-toggle btn-block text-start" type="button" id="changeCurren"#}
+{#                                data-bs-toggle="dropdown" aria-expanded="false" style="padding: 10px;">#}
+{#                     <div class="icons">#}
+{#<i class="far fa-filter"></i>#}
+{#                    </div>#}
+{#                    <span class="spans">All</span>#}
+{#                   <span class="select-arrow">#}
+{#                    <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" width="16" height="16">#}
+{#                      <path fill="none" d="M0 0h24v24H0z"></path>#}
+{#                      <path d="M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z" fill="rgba(198,198,198,1)"></path>#}
+{#                    </svg>#}
+{#                  </span>#}
+{#                  </button>#}
+{#                  <ul class="dropdown-menu" aria-labelledby="changeCurrencyDd">#}
+{#                                          <li class=" active">#}
+{#                        <a class="dropdown-item" href="/updates">#}
+{#                          All#}
+{#                        </a>#}
+{#                      </li>#}
+{#                                          <li class="">#}
+{#                        <a class="dropdown-item" href="/updates/decreased">#}
+{#                          Rate decreased#}
+{#                        </a>#}
+{#                      </li>#}
+{#                                          <li class="">#}
+{#                        <a class="dropdown-item" href="/updates/disabled">#}
+{#                          Service disabled#}
+{#                        </a>#}
+{#                      </li>#}
+{#                                      </ul>#}
+{#                </div>#}
+                  </div></div></div>
+      
+       <div class="card card-border">
+                        <div class="card-body">
+     <div class="row">
+                <div class="col">
+                    <div class="services-list__table">
+                        <div class="table-bg component_table ">
+                            <div class="table-wr table-responsive">
+                                <table class="table" id="service-table"> 
+          <thead>
+            <tr>
+              <th>Updated ID</th>
+<th class="width-service-name"><span>        Service Id          </span>    </th>
+<th>Service Name</th>
+              <th>Description</th>
+<th>Date </th> 
+              <th>Action</th>
+             
+            </tr>
+          </thead>
+          <tbody>
+{#reject - #702283#}
+{#completed-0e7f00#}
+{#inprogress-0721ed#}
+{#pending-42b7af#}
+{#error-f71111#}
+
+<td colspan="9">
+            {% for order in orders %}
+              <tr>
+<td>{{ order['id'] }}</td> 
+<td>{{ order['service_id'] }}</td> 
+                <td>{{ order['service_name'] }}</td>
+               
+                 <td>{{ order['description'] }}</td> 
+      <td>{{ order['date'] }}</td> 
+          <td>{{ order['action'] }}</td>
+               
+
+              </tr>
+            {% endfor %}
+</td>
+          </tbody>
+        </table><hr>
+                                 
+ </div> </div></div></div>
+                          <div class="container text-center d-flex justify-content-center">
+      <nav aria-label="">
+          
+           </div>
+  </div>
+</div>
+
+
+
+
+
+{% include 'ftd.twig' %}

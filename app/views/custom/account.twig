@@ -1,0 +1,207 @@
+{% include 'ht.twig' %}
+
+
+
+
+
+<div class="app-content">
+    <div id="PageTitle">Account & Details</div>
+    <div class="container-fluid">
+        
+                 <section>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="card card-border mb-4">
+                        <div class="card-body">
+                            <div class="row align-items-center">
+                                <div class="col-md">
+                                    <div class="acc-user">
+                                        <div class="acc-avatar">
+                                            <img src="https://cdn.mypanel.link/dfdhtt/s47w3mlfsphgszw4.png" class="usr-avatar-img" alt="Avatar">
+                                        </div>
+                                        <div>
+                                            <div class="acc-username">{{ user['username'] }}</div>
+                                            <div class="acc-mail">{{ user['email'] }}</div>
+                                        </div>
+                                    </div>
+                                </div> 
+                                <div class="col-md-auto mt-3 mt-md-0">
+                                    <button id="gender-switch" class="acc-switch">
+                                        <div class="acc-switch-bg"></div>
+                                        <div class="btn-gender">
+                                            <i class="ri-men-line"></i>
+                                        </div>
+                                        <div class="btn-gender">
+                                            <i class="ri-women-line"></i>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                        </div><!-- ./card-body -->
+                    </div>{% if error %}
+        <div class="alert alert-dismissible alert-danger">
+          <button type="button" class="close" data-dismiss="alert">×</button>
+          {{ errorText }}
+        </div>
+      {% endif %}
+      {% if success %}
+        <div class="alert alert-dismissible alert-success">
+          <button type="button" class="close" data-dismiss="alert">×</button>
+          {{ successText }}
+        </div>
+      {% endif %}<!-- ./card-->
+                </div><!-- ./col(left) --> 
+                <div class="col-lg-6 mb-4">
+                    <div class="card card-border acc-card-left">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md">
+                                    <div class="dh-icon icon-info">
+                                        <i class="ri-global-line"></i>
+                                    </div>
+                                </div>
+                                <div class="col-md-auto ms-auto acc-card-left mt-4 mt-md-0">
+                                    <div class="acc-api">
+                                        <div class="acc-api-key">
+                                                    
+                                          Generate New API Key
+            
+                                            
+                                        </div>
+  <form action="/account/newapikey" method="post">
+                                             <input type="hidden" name="_csrf" value="WcTHAGHCuQUKh6WRZ_KxNhWwYRIZjilB7qbTimoKuDcOlYZGE4HuX2v-8LxRuN90Qt4yV1TianSZzJb8CEj2Vg==">
+
+              <button type="submit" class="ms-3">  <i class="ri-refresh-line"></i></button>
+
+
+
+        </form>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="card card-border mb-4">
+                        <div class="card-header"><!-- card start -->
+                          <div class="card-custom-title">
+                            <div class="row align-items-center">
+                              <div class="col-auto">
+                                <div class="d-head-icon">
+                                  <i class="ri-lock-2-line"></i>
+                                </div>
+                              </div>
+                              <div class="col">
+                                <h3 class="card-title">Change Password</h3>
+                                <p class="card-head-text">Change your password from here.</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div><!-- card -->
+                        <div class="card-body">
+                            <form action="" method="POST">
+                                  <div class="mb-4">
+                                    <label for="mb-2" class="form-label">
+                                        <div class="d-flex align-items-center">
+                                            <div class="d-icon i-secondary me-2">
+                                                <i class="ri-vip-crown-2-line"></i>
+                                            </div>
+                                            <span class="s-color fw-600">Current Password</span>
+                                        </div>
+                                    </label>
+                                    <input type="password" class="form-control" placeholder="" autocomplete="current-password" name="SettingsFrom[current_password]">
+                                </div><!-- ./ form-group -->
+                                <div class="row row-cols-md-2 row-cols-1">
+                                    <div class="col mb-4">
+                                        <label for="mb-2" class="form-label">
+                                            <div class="d-flex align-items-center">
+                                                <div class="d-icon i-primary me-2">
+                                                    <i class="ri-vip-crown-2-line"></i>
+                                                </div>
+                                                <span class="p-color fw-600">New Password</span>
+                                            </div>
+                                        </label>
+            <input type="password" class="form-control" value="" name="password">
+                                    </div><!-- ./ form-group -->
+                                    <div class="col mb-4">
+                                        <label for="mb-2" class="form-label">
+                                            <div class="d-flex align-items-center">
+                                                <div class="d-icon i-warning me-2">
+                                                    <i class="ri-vip-crown-2-line"></i>
+                                                </div>
+                                                <span class="w-color fw-600">Confirm Password</span>
+                                            </div>
+                                        </label>
+            <input type="password" class="form-control" value="" name="confirm_password">
+                                    </div><!-- ./ form-group -->
+                                </div>
+                                        <input type="hidden" name="_csrf" value="HKuMb41Fudg6-c3yFcHYVDIXpBWN0gGIuvSgdGClqGJDkt1e2iLPiHue-5BUgJMmak77I925Rdfbpc5DC_fyAA==">
+
+                                <button type="submit" class="btn btn-primary btn-border btn-block">
+                                    Change Password
+                                </button>
+                            </form>
+                        </div>
+                    </div><!-- ./card -->
+                </div><!-- ./col (left) -->
+                <div class="col-lg-6">
+                    <div class="card card-border mb-4">
+                         <div class="card-header"><!-- card start -->
+                          <div class="card-custom-title">
+                            <div class="row align-items-center">
+                              <div class="col-auto">
+                                <div class="d-head-icon">
+                                  <i class="ri-tools-line"></i>
+                                </div>
+                              </div>
+                              <div class="col">
+                                <h3 class="card-title">Other Settings</h3>
+                                <p class="card-head-text">Change your other Settings from here</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div><!-- card -->
+                        <div class="card-body">
+                            <form action="" method="POST">
+                    
+                                <div class="mb-4">
+                                    <label for="mb-2" class="form-label">
+                                        <div class="d-flex align-items-center">
+                                            <div class="d-icon i-info me-2">
+                                                <i class="ri-vip-crown-2-line"></i>
+                                            </div>
+                                            <span class="s-color fw-600">Language</span>
+                                        </div>
+                                    </label>
+                                                           <select class="form-control" name="lang">
+                  {% for language in site['languages'] %}
+                  <option {% if language["code"] == user["lang"] %} selected {% endif %} value="{{ language["code"] }}">{{ language["name"] }}</option>
+                  {% endfor %}
+              </select>
+                                </div><!-- ./ form-group -->
+                                  <input type="hidden" name="_csrf" value="HKuMb41Fudg6-c3yFcHYVDIXpBWN0gGIuvSgdGClqGJDkt1e2iLPiHue-5BUgJMmak77I925Rdfbpc5DC_fyAA==">
+
+                                <button type="submit" class="btn btn-primary btn-border btn-block">
+                                    Save Settings
+                                </button>
+                            </form>
+                        </div>
+                    </div><!-- ./card -->
+                </div><!-- ./col (right) -->
+            </div>
+        </section>
+    </div>
+</div><!-- app-content -->
+
+
+
+
+
+
+{% include 'ftd.twig' %}

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+{% for lang in site['languages'] %}
+{% if lang['active'] %}
+<html lang="{{ lang['code'] }}">
+{% endif %}
+{% endfor %}
+<head>
+  <base href="{{ site['url'] }}">
+  
+  
+  <title>{% if pagetitle %}  {{ pagetitle }}  {% else %} {{ title }} {% endif %} </title>
+  <meta property="og:title" content="{% if pagetitle %}  {{ pagetitle }}  {% else %} {{ title }} {% endif %}" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords" content="{% if pagekeywords %} {{ pagekeywords }} {% else %} {{ site["keywords"]}}  {% endif %}">
+  <meta name="description" content="{% if pagedescription %} {{ pagedescription }} {% else %} {{ site['description'] }}  {% endif %}">
+  <meta property="og:description" content="{% if pagedescription %} {{ pagedescription }} {% else %} {{ site['description'] }}  {% endif %}" />
+  {% if site['favicon'] %}
+    <link rel="shortcut icon" type="image/ico" href="{{ site['favicon'] }}" />
+  {% endif %}
+
+		<!-- CSS here -->
+        <link rel="stylesheet" href="../panel/assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../panel/assets/css/animate.min.css">
+        <link rel="stylesheet" href="../panel/assets/css/magnific-popup.css">
+        <link rel="stylesheet" href="../panel/assets/css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="../panel/assets/css/uicons-solid-rounded.css">
+        <link rel="stylesheet" href="../panel/assets/css/jquery.mCustomScrollbar.min.css">
+        <link rel="stylesheet" href="../panel/assets/css/flaticon.css">
+        <link rel="stylesheet" href="../panel/assets/css/slick.css">
+        <link rel="stylesheet" href="../panel/assets/css/default.css">
+        <link rel="stylesheet" href="../panel/assets/css/style.css">
+        <link rel="stylesheet" href="../panel/assets/css/bhand.css">
+        <link rel="stylesheet" href="../panel/assets/css/responsive.css">
+    </head>
+    <body>
+
+        {#<!-- preloader -->#}
+        {#<div id="preloader">#}
+        {#    <div id="loading-center">#}
+        {#        <div id="loading-center-absolute">#}
+        {#            <div class="object" id="object_one"></div>#}
+        {#            <div class="object" id="object_two"></div>#}
+        {#            <div class="object" id="object_three"></div>#}
+        {#        </div>#}
+        {#    </div>#}
+        {#</div>#}
+        {#<!-- preloader-end -->#}
+
+		<!-- Scroll-top -->
+        <button class="scroll-top scroll-to-target" data-target="html">
+            <i class="fas fa-angle-up"></i>
+        </button>
+        <!-- Scroll-top-end-->
+
+        <!-- sidebar -->
+        {#<div class="sidebar">#}
+        {#    <div class="sidebar-logo mb-25">#}
+        {#        <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>#}
+        {#    </div>#}
+        {#    <div class="sidebar-icon">#}
+        {#        <ul>#}
+        {#            <li class="active"><a href="index.html"><i class="fi-sr-apps-delete"></i></a></li>#}
+        {#            <li><a href="nft-live-bidding.html"><i class="fi-sr-book-alt"></i></a></li>#}
+        {#            <li><a href="collections.html"><i class="fi-sr-butterfly"></i></a></li>#}
+        {#            <li><a href="create-item.html"><i class="fi-sr-camping"></i></a></li>#}
+        {#            <li><a href="category.html"><i class="fi-sr-crown"></i></a></li>#}
+        {#            <li><a href="author-profile.html"><i class="fi-sr-settings"></i></a></li>#}
+        {#            <li><a href="#" id="btnFullscreen"><i class="fi-sr-tool-marquee"></i></a></li>#}
+        {#        </ul>#}
+        {#    </div>#}
+        {#</div>#}
+        <!-- sidebar-end -->
+
+        <!-- Offcanvas-area -->
+        {#<div class="offcanvas-wrapper">#}
+        {#    <div class="menu-trigger"><i class="fi-sr-angle-small-left"></i></div>#}
+        {#    <div class="menu-close"><i class="fi-sr-angle-small-right"></i></div>#}
+        {#    <div class="offcanvas-inner scroll">#}
+        {#        <div class="author-profile text-center mb-30">#}
+        {#            <div class="author-img">#}
+        {#                <img src="assets/img/others/author_img.png" alt="">#}
+        {#            </div>#}
+        {#            <div class="author-content">#}
+        {#                <h4 class="title">Author Profile</h4>#}
+        {#                <p>Super Author</p>#}
+        {#                <a href="login-register.html" class="btn">Checkout</a>#}
+        {#            </div>#}
+        {#        </div>#}
+        {#        <div class="sidebar-slider text-center mb-25">#}
+        {#            <div class="sidebar-active">#}
+        {#                <div class="sidebar-img">#}
+        {#                    <a href="market-single.html"><img src="assets/img/others/sidebar_img01.png" alt=""></a>#}
+        {#                </div>#}
+        {#                <div class="sidebar-img">#}
+        {#                    <a href="market-single.html"><img src="assets/img/others/sidebar_img02.png" alt=""></a>#}
+        {#                </div>#}
+        {#                <div class="sidebar-img">#}
+        {#                    <a href="market-single.html"><img src="assets/img/others/sidebar_img03.png" alt=""></a>#}
+        {#                </div>#}
+        {#            </div>#}
+        {#        </div>#}
+        {#        <div class="overview">#}
+        {#            <div class="overview-title">#}
+        {#                <h4 class="title">Overview</h4>#}
+        {#            </div>#}
+        {#            <div class="overview-item-wrap">#}
+        {#                <div class="overview-item">#}
+        {#                    <div class="overview-icon">#}
+        {#                        <i class="fi-sr-box-alt"></i>#}
+        {#                    </div>#}
+        {#                    <div class="overview-content">#}
+        {#                        <h4 class="title">Open project</h4>#}
+        {#                        <span>820</span>#}
+        {#                    </div>#}
+        {#                    <a href="nft-marketplace.html"><i class=" fi-sr-angle-small-right"></i></a>#}
+        {#                </div>#}
+        {#                <div class="overview-item">#}
+        {#                    <div class="overview-icon">#}
+        {#                        <i class="fi-sr-mountains"></i>#}
+        {#                    </div>#}
+        {#                    <div class="overview-content">#}
+        {#                        <h4 class="title">Successful Completed</h4>#}
+        {#                        <span>546</span>#}
+        {#                    </div>#}
+        {#                    <a href="nft-marketplace.html"><i class=" fi-sr-angle-small-right"></i></a>#}
+        {#                </div>#}
+        {#                <div class="overview-item">#}
+        {#                    <div class="overview-icon">#}
+        {#                        <i class=" fi-sr-hourglass-end"></i>#}
+        {#                    </div>#}
+        {#                    <div class="overview-content">#}
+        {#                        <h4 class="title">trending</h4>#}
+        {#                        <span>32</span>#}
+        {#                    </div>#}
+        {#                    <a href="nft-marketplace.html"><i class=" fi-sr-angle-small-right"></i></a>#}
+        {#                </div>#}
+        {#            </div>#}
+        {#        </div>#}
+        {#    </div>#}
+        {#</div>#}
+        <div class="offcanvas-overly"></div>
+        <!-- Offcanvas-area-end -->
+
+        <!-- main-content -->
+        <div class="main-content">
+            <!-- header-area -->
+            <header>
+                <div class="menu-area">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="mobile-nav-toggler"><i class="fas fa-bars"></i></div>
+                                <div class="menu-wrap">
+                                    <nav class="menu-nav">
+                                        <div class="logo"><a href="/"><img src="{{ site['logo'] }}" alt="logo"></a></div>
+                                        <div class="header-form">
+                                            {#<form action="#">#}
+                                            {#    <button><i class="flaticon-search"></i></button>#}
+                                            {#    <input type="text" placeholder="Search Artwork">#}
+                                            {#</form>#}
+                                        </div>
+                                        <div class="navbar-wrap main-menu d-none d-lg-flex">
+                                            <ul class="navigation">
+                                                
+                                                
+                                                
+                                                
+                                                
+                                                
+                                                
+                                                
+                                                
+{#                                                <div class="dropdown">#}
+{#<button class="dropbtn" style="background: #0d6efd7a;"><i style="color:#0d6efd;"class="fas fa-language" aria-hidden="true"></i>#}
+{#</button>#}
+{#<div class="dropdown-content">#}
+    
+{#  <!-- GTranslate: https://gtranslate.io/ -->#}
+{#<a href="/#" onclick="doGTranslate(&#39;en|ar&#39;);return false;" title="Arabic" class="gflag nturl" style="background-position:-100px -0px;"><img src="../public/wolfix/New Order_files/blank.png" height="32" width="32" alt="arabic">AR</a><a href="/#" onclick="doGTranslate(&#39;en|en&#39;);return false;" title="English" class="gflag nturl" style="background-position:-0px -0px;"><img src="./public/wolfix/New Order_files/blank.png" height="32" width="32" alt="English">En</a>#}
+
+{#<style type="text/css">#}
+{#<!--#}
+{#a.gflag {vertical-align:middle;font-size:32px;padding:1px 0;background-repeat:no-repeat;background-image:url();}#}
+{#a.gflag img {border:0;}#}
+{#a.gflag:hover {background-image:url();}#}
+{##goog-gt-tt {display:none !important;}#}
+{#.goog-te-banner-frame {display:none !important;}#}
+{#.goog-te-menu-value:hover {text-decoration:none !important;}#}
+{#body {top:0 !important;}#}
+{##google_translate_element2 {display:none!important;}#}
+{#-->#}
+{#</style>#}
+
+{#<div id="google_translate_element2"><div class="skiptranslate goog-te-gadget" dir="ltr" style=""><div id=":0.targetLanguage"><select class="goog-te-combo" aria-label="Language Translate Widget"><option value="">Select Language</option><option value="af">Afrikaans</option><option value="sq">Albanian</option><option value="am">Amharic</option><option value="ar">Arabic</option><option value="hy">Armenian</option><option value="az">Azerbaijani</option><option value="eu">Basque</option><option value="be">Belarusian</option><option value="bn">Bengali</option><option value="bs">Bosnian</option><option value="bg">Bulgarian</option><option value="ca">Catalan</option><option value="ceb">Cebuano</option><option value="ny">Chichewa</option><option value="zh-CN">Chinese (Simplified)</option><option value="zh-TW">Chinese (Traditional)</option><option value="co">Corsican</option><option value="hr">Croatian</option><option value="cs">Czech</option><option value="da">Danish</option><option value="nl">Dutch</option><option value="eo">Esperanto</option><option value="et">Estonian</option><option value="tl">Filipino</option><option value="fi">Finnish</option><option value="fr">French</option><option value="fy">Frisian</option><option value="gl">Galician</option><option value="ka">Georgian</option><option value="de">German</option><option value="el">Greek</option><option value="gu">Gujarati</option><option value="ht">Haitian Creole</option><option value="ha">Hausa</option><option value="haw">Hawaiian</option><option value="iw">Hebrew</option><option value="hi">Hindi</option><option value="hmn">Hmong</option><option value="hu">Hungarian</option><option value="is">Icelandic</option><option value="ig">Igbo</option><option value="id">Indonesian</option><option value="ga">Irish</option><option value="it">Italian</option><option value="ja">Japanese</option><option value="jw">Javanese</option><option value="kn">Kannada</option><option value="kk">Kazakh</option><option value="km">Khmer</option><option value="rw">Kinyarwanda</option><option value="ko">Korean</option><option value="ku">Kurdish (Kurmanji)</option><option value="ky">Kyrgyz</option><option value="lo">Lao</option><option value="la">Latin</option><option value="lv">Latvian</option><option value="lt">Lithuanian</option><option value="lb">Luxembourgish</option><option value="mk">Macedonian</option><option value="mg">Malagasy</option><option value="ms">Malay</option><option value="ml">Malayalam</option><option value="mt">Maltese</option><option value="mi">Maori</option><option value="mr">Marathi</option><option value="mn">Mongolian</option><option value="my">Myanmar (Burmese)</option><option value="ne">Nepali</option><option value="no">Norwegian</option><option value="or">Odia (Oriya)</option><option value="ps">Pashto</option><option value="fa">Persian</option><option value="pl">Polish</option><option value="pt">Portuguese</option><option value="pa">Punjabi</option><option value="ro">Romanian</option><option value="ru">Russian</option><option value="sm">Samoan</option><option value="gd">Scots Gaelic</option><option value="sr">Serbian</option><option value="st">Sesotho</option><option value="sn">Shona</option><option value="sd">Sindhi</option><option value="si">Sinhala</option><option value="sk">Slovak</option><option value="sl">Slovenian</option><option value="so">Somali</option><option value="es">Spanish</option><option value="su">Sundanese</option><option value="sw">Swahili</option><option value="sv">Swedish</option><option value="tg">Tajik</option><option value="ta">Tamil</option><option value="tt">Tatar</option><option value="te">Telugu</option><option value="th">Thai</option><option value="tr">Turkish</option><option value="tk">Turkmen</option><option value="uk">Ukrainian</option><option value="ur">Urdu</option><option value="ug">Uyghur</option><option value="uz">Uzbek</option><option value="vi">Vietnamese</option><option value="cy">Welsh</option><option value="xh">Xhosa</option><option value="yi">Yiddish</option><option value="yo">Yoruba</option><option value="zu">Zulu</option></select></div>Powered by <span style="white-space:nowrap"><a class="goog-logo-link" href="https://translate.google.com/" target="_blank"><img src="./public/wolfix/login_files/googlelogo_color_42x16dp.png" width="37px" height="14px" style="padding-right: 3px" alt="Google Translate">Translate</a></span></div></div>#}
+{#<script type="text/javascript">#}
+{#function googleTranslateElementInit2() {new google.translate.TranslateElement({pageLanguage: 'en',autoDisplay: false}, 'google_translate_element2');}#}
+{#</script><script type="text/javascript" src="../public/wolfix/login_files/element.js.download"></script>#}
+
+
+{#<script type="text/javascript">#}
+/* <![CDATA[ */
+{#eval(function(p,a,c,k,e,r){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)r[e(c)]=k[c]||e(c);k=[function(e){return r[e]}];e=function(){return'\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('6 7(a,b){n{4(2.9){3 c=2.9("o");c.p(b,f,f);a.q(c)}g{3 c=2.r();a.s(\'t\'+b,c)}}u(e){}}6 h(a){4(a.8)a=a.8;4(a==\'\')v;3 b=a.w(\'|\')[1];3 c;3 d=2.x(\'y\');z(3 i=0;i<d.5;i++)4(d[i].A==\'B-C-D\')c=d[i];4(2.j(\'k\')==E||2.j(\'k\').l.5==0||c.5==0||c.l.5==0){F(6(){h(a)},G)}g{c.8=b;7(c,\'m\');7(c,\'m\')}}',43,43,'||document|var|if|length|function|GTranslateFireEvent|value|createEvent||||||true|else|doGTranslate||getElementById|google_translate_element2|innerHTML|change|try|HTMLEvents|initEvent|dispatchEvent|createEventObject|fireEvent|on|catch|return|split|getElementsByTagName|select|for|className|goog|te|combo|null|setTimeout|500'.split('|'),0,{}))#}
+/* ]]> */
+{#</script>#}
+{#</div>#}
+{#</div> #}
+                                                
+                                                
+                                                
+                                                
+                                                
+                                                
+                                                
+                                                
+                                                
+                                                <li {% if active_menu == "login" %} class="active"  {% endif %} class=""><a href="/">Home</a></li>
+                                                  <li {% if active_menu == "signup" %} class="active"  {% endif %} class=""><a href="/signup">Sign-Up</a></li>
+                                                  <li {% if active_menu == "terms" %} class="active"  {% endif %} class=""><a href="/terms">Terms</a></li>
+                                               
+                                              
+                                            </ul>
+                                        </div>
+                                        <div class="header-action d-none d-md-block">
+                                            <ul>
+                                                <li class="header-btn"><a href="/signup" class="btn">Login</a></li>
+                                            </ul>
+                                        </div>
+                                    </nav>
+                                </div>
+                                <!-- Mobile Menu  -->
+                                <div class="mobile-menu">
+                                    <nav class="menu-box">
+                                        <div class="close-btn"><i class="fas fa-times"></i></div>
+                                        <div class="nav-logo"><a href="/"><img src="assets/img/logo/logo.png" alt=""></a>
+                                        </div>
+                                        <div class="menu-outer">
+                                            <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
+                                        </div>
+                                        <div class="social-links">
+                                            <ul class="clearfix">
+                                                <li><a href="#"><span class="fab fa-twitter"></span></a></li>
+                                                <li><a href="#"><span class="fab fa-facebook-f"></span></a></li>
+                                                
+                                                <li><a href="#"><span class="fab fa-instagram"></span></a></li>
+                                              
+                                            </ul>
+                                        </div>
+                                    </nav>
+                                </div>
+                                <div class="menu-backdrop"></div>
+                                <!-- End Mobile Menu -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>

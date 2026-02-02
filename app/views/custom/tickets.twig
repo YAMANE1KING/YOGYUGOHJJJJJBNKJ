@@ -1,0 +1,154 @@
+{% include 'ht.twig' %}
+
+
+<div class="app-content">
+    <div id="PageTitle">Create Ticket</div>
+    <div class="container-fluid">
+        <section class="dashboard-head-wrapper">
+            <div class="dashboard-head card-border">
+              	<img src="https://cdn.mypanel.link/dfdhtt/f4u12sjlz61rswpu.png" 
+                     class="mascot-img" />
+                <div class="dhead-body">
+                    <h2 class="title">
+                        Welcome to Support
+                    </h2>
+                    <p class="text-2">
+                        Our team averages a response time of 0-15 minutes. LIVE Chat will respond within 2 minutes. All
+                        24 hours per day 7 days a week. Admins will respond within every 2 hours. We are here to work
+                        for you and your orders. Please let us know if you have any questions at all.
+                    </p>
+                </div>
+            </div>
+        </section>
+        <section class="sc-page">
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="card card-border">
+                        <div class="card-header">
+                          <div class="card-custom-title">
+                            <div class="row align-items-center">
+                              <div class="col-auto">
+                                <div class="d-head-icon">
+                                  <i class="ri-message-3-line"></i>
+                                </div>
+                              </div>
+                              <div class="col">
+                                <h3 class="card-title">Create a Ticket</h3>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card-body">{% if error %}
+        <div class="alert alert-dismissible alert-danger {% if site['rtl'] %} rtl-alert {% endif %}">
+          <button type="button" class="close" data-dismiss="alert">×</button>
+          {{ errorText }}
+        </div>
+      {% elseif success %}
+        <div class="alert alert-dismissible alert-success {% if site['rtl'] %} rtl-alert {% endif %}">
+          <button type="button" class="close" data-dismiss="alert">×</button>
+          {{ successText }}
+        </div>
+      {% endif %}
+                            <form action="" method="post" id="ticketsend">
+            <div class="alert alert-dismissible alert-danger ticket-danger " style="display: none">
+              <button type="button" class="close">&times;</button>
+              <div></div>
+            </div>
+                                <div class="mb-4">
+                                    <label for="mb-2" class="form-label">
+                                        <div class="d-flex align-items-center">
+                                            <div class="d-icon i-primary me-2">
+                                                <i class="ri-vip-crown-2-line"></i>
+                                            </div>
+                                            <span class="p-color fw-600">Subject</span>
+                                        </div>
+                                    </label>
+                                    <select  type="text" class="form-control" id="subject" name="subject">
+                                  <option  value="Order">Order</option>
+                                  <option  value="Service">Service</option>
+                                  <option  value="Child Panel">Child Panel</option>
+                                  <option  value="API">API</option>
+                                  <option  value="Bug Report">Bug Report</option>
+                                  <option  value="-Request">Request</option>
+                                  <option  value="Other">Other</option>
+                              </select>
+                                </div><!-- ./ form-group -->
+                                <div class="mb-4">
+                                    <label for="mb-2" class="form-label">
+                                        <div class="d-flex align-items-center">
+                                            <div class="d-icon i-info me-2">
+                                                <i class="ri-vip-crown-2-line"></i>
+                                            </div>
+                                            <span class="i-color fw-600">Message</span>
+                                        </div>
+                                    </label>
+              <textarea class="form-control" rows="7" id="message" name="message">{{ data['message'] }}</textarea>
+                                </div><!-- ./ form-group -->
+                                   <input type="hidden" name="_csrf" value="cKajDr-l9RtbpiCtvt2Aw_nd11jb8J3KtQY6v28GtTAvn_I_6MKDSxrBFs__nMuxoYSIboub2ZXUV1SIBFTvUg==">
+
+                                <button type="submit" class="btn btn-primary btn-border btn-block">
+                                    Submit Ticket
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div><!-- ./col (create a ticket) -->
+                <div class="col-md-6">
+                    <div class="card card-border">
+                         <div class="card-header">
+                          <div class="card-custom-title">
+                            <div class="row align-items-center">
+                              <div class="col-auto">
+                                <div class="d-head-icon">
+                                  <i class="ri-chat-history-line"></i>
+                                </div>
+                              </div>
+                              <div class="col">
+                                <h3 class="card-title">Ticket History</h3>
+                              </div></br>
+                              </br></br>
+                               <table class="table">
+                                            <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Subject</th>
+                                                <th>Status</th>
+                                                <th class="nowrap">Last update</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+              {% for ticket in ticketList %}
+                <tr>
+                  <td><span class="sp-serv-sm">{{ ticket['ticket_id'] }}</span></td>
+                  {% if ticket["support_new"] == 2 %}
+                    <td><a href="tickets/{{ ticket['ticket_id'] }}"><strong>{{ ticket['subject'] }}</strong></a></td>
+                  {% else %}
+                    <td><a href="tickets/{{ ticket['ticket_id'] }}">{{ ticket['subject'] }}</a></td>
+                  {% endif %}
+                  <td><span class="sp-serv-sm">{{ ticket['status'] }}</span></td>
+                  <td><span class="sp-serv-sm"><span class="nowrap">{{ ticket['lastupdate_time'] }}</span></span></td>
+                </tr>
+              {% endfor %}
+</td>
+            </tbody>
+          </table>
+                              
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card-body">
+                                                      
+                          
+                        </div>
+                    </div>
+                </div>
+            </div><!-- ./row -->
+        </section>
+    </div>
+</div><!-- app-content -->
+
+
+
+
+
+{% include 'ftd.twig' %}

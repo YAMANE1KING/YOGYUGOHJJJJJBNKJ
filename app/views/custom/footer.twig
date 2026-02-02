@@ -1,0 +1,200 @@
+
+
+
+
+
+<script src="https://res.cloudinary.com/smxboostpanel/raw/upload/v1657585281/selectbox_xhdj3n.js"></script> 
+<script>
+								  function HideEverything(){
+									$('.ordernumbers').hide();
+									$('.transactionid').hide();
+								  }
+								  $(document).ready(function(){
+								  $('.subject').change(function(){
+										HideEverything();		
+										if($(this).val()=='Sipariş'){
+											$('.ordernumbers').show();
+											$('#requestRefill').prop('checked',true);
+											$('#paymentPaypal').prop('checked',false);
+										}  		
+										if($(this).val()=='Ödeme'){
+											$('.transactionid').show();
+											$('#paymentPaypal').prop('checked',true);
+											$('#requestRefill').prop('checked',false);
+										}
+									});
+									$('#submit').click(function(e){
+										e.preventDefault();
+										console.log('working');
+										$TheSubject = $('.subject:checked').val();
+										$TheRequest = $('.second-options:checked').val();
+										if ($TheSubject == 'Sipariş'){
+											$final = 'Sipariş No: ' + $('#ordernumbers').val() + '\n\n' + $('#message').val();
+										}else if($TheSubject == 'Ödeme'){
+											$final = 'Ödeme No:' +  $('#transactionid').val() +'\n\n' + $('#message').val();
+											
+										}else{
+											$final = $('#message').val();
+										}
+										$('#alldata').val($final);
+										$('.subject:checked').val($TheSubject);
+										//submit
+										$('#submit').submit();
+									});
+								  });
+</script>
+<script>
+    $(window).bind('load', function()
+    {
+        $("div#order_link").html('' +
+            '<div class="fga mb-4">' +
+            '<label class="fla" for="orderLink">Link</label>' +
+            '<div class="fg">' +
+            '<div class="fg-icon"><i class="fa fa-link"></i></div>' +
+            '<input class="fg-control" name="OrderForm[link]" value="" type="text" id="field-orderform-fields-link">' +
+            '</div>' +
+			'</div>');
+
+        $("div#order_quantity").html('' +
+            '<div class="fga mb-4">' +
+            '<label class="fla" for="orderQuantitiy">Quantity</label>' +
+            '<div class="fg">' +
+            '<div class="fg-icon"><i class="fa fa-bullhorn"></i></div>' +
+            '<input class="fg-control" name="OrderForm[quantity]" value="" type="number" id="field-orderform-fields-quantity">' +
+            '</div>' +
+			'</div>');
+   
+        $("div#order_phone").html('' +
+            '<div class="fga mb-4">' +
+            '<label class="fla" for="orderQuantitiy">Phone</label>' +
+            '<div class="fg">' +
+            '<div class="fg-icon"><i class="far fa-mobile-android-alt"></i></div>' +
+            '<input class="fg-control" name="AddFoundsForm[fields][phone]" value="" type="text" id="field-phone">' +
+            '</div>' +
+			'</div>');
+
+    });
+
+
+</script>  
+</body>
+</html>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> 
+<!--<script src="https://cdn.mypanel.link/libs/jquery/1.12.4/jquery.min.js"></script> -->
+<script type="text/javascript" src="https://cdn.mypanel.link/global/aknio8ec1fpphc0p.js">
+</script>
+<script type="text/javascript" src="https://cdn.mypanel.link/global/nfos6j9mo1on7ksz.js">
+</script>
+<script type="text/javascript" src="https://cdn.mypanel.link/global/040bmdqyxwa69yl0.js">
+</script>
+<script type="text/javascript" src="https://cdn.mypanel.link/global/0r6memql1kwlcz43.js">
+</script>
+<script type="text/javascript" src="https://cdn.mypanel.link/si46tw/kydspdmo3kxkrb96.js">
+</script>
+<script type="text/javascript" src="https://cdn.mypanel.link/si46tw/wa3reye9f0jnb65l.js">
+</script>
+<script type="text/javascript" >
+ window.modules.layouts = {"theme_id":1,"auth":0,"live":true,"csrftoken":"7zCwWi79mTVl1y6Oc0fPabFgqt9eI4zozspxljVqFEOWduoQS8rJZR-0HM0dC61Q4FD_nHMO79q7kh_ZAwRnCw=="}; </script>
+<script type="text/javascript" >
+ window.modules.signin = []; </script>
+<script type="text/javascript" >
+</script>
+<script>
+var hash = location.hash;
+var loginModal = new bootstrap.Modal(document.getElementById('login'));
+
+if (loginModal) {
+  document.getElementById('login').addEventListener('hide.bs.modal', (event) => {
+    setTimeout(function(){
+      history.replaceState("", document.title, window.location.pathname);
+    }, 1);
+  });
+
+  document.getElementById('login').addEventListener('show.bs.modal', event => {
+    window.location.hash = 'login';
+  })
+
+}
+
+if(hash === '#login') {
+  loginModal.show();
+}
+  
+</script>
+<script>
+
+function getUrlParameter(sParam) {
+    var sPageURL = decodeURIComponent(window.location.search.substring(1));
+    var sURLVariables = sPageURL.split('&');
+    var sParameterName;
+    var i;
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : sParameterName[1];
+        }
+    }
+}
+
+  
+
+var select_service_id = getUrlParameter("select_service_id");
+if (select_service_id) {
+    var selectSerCatID = window.modules.siteOrder.services[select_service_id].cid;
+  	let orderCat = document.getElementById('orderform-category');
+  	let orderSer = document.getElementById('orderform-service');
+	
+    $(function () {
+        orderCat.querySelector('[selected]').removeAttribute('selected');
+        console.log(selectSerCatID);
+        orderCat.querySelector('[value="'+ selectSerCatID +'"]').setAttribute('selected', 'selected');
+        orderCat.value = selectSerCatID;
+
+        var event = document.createEvent('HTMLEvents');
+        event.initEvent('change', true, false);
+        orderCat.dispatchEvent(event);
+
+        setTimeout(() => {
+            let controlSel = orderSer.querySelector('[selected]')
+            if (controlSel) {
+                controlSel.removeAttribute('selected');
+            }
+            console.log(select_service_id);
+            orderSer.querySelector('[value="'+ select_service_id +'"]').setAttribute('selected', 'selected');
+            orderSer.value = select_service_id;
+            orderSer.dispatchEvent(event);
+
+        }, 500);
+    });
+}
+
+</script>
+
+
+
+
+
+
+
+<script src="https://www.google.com/recaptcha/api.js?hl=en"></script>
+   
+
+  {{ footerCode }}
+
+
+
+
+<script type="text/javascript" src="public/ch3915babussofa4.js">
+      </script>
+  
+  <script type="text/javascript" src="public/xcz59lmywkfdgsp4.js">
+      </script>
+
+
+
+
+
+
+
+
+

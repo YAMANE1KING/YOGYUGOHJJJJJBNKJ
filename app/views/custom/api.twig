@@ -1,0 +1,377 @@
+{% include 'ht.twig' %}
+
+
+
+<div class="app-content api-page">
+    <div class="container">
+        <section class="api-title-section">
+            <div id="PageTitle">API Documents</div>
+        </section>
+        <section class="api-first">
+            <div class="row row-cols-lg-4 row-cols-md-2">
+                <div class="col">
+                    <div class="card card-border mb-4">
+                        <div class="card-body">
+                            <h4 class="api-title p-color">POST</h4>
+                            <span class="api-text">HTTP Method</span>
+                        </div>
+                    </div>
+                </div><!-- ./col -->
+                <div class="col">
+                    <div class="card card-border mb-4">
+                        <div class="card-body">
+                            <h4 class="api-title s-color">{{ site["url"] }}/api/v2</h4>
+                            <span class="api-text">API URL</span>
+                        </div>
+                    </div>
+                </div><!-- ./col -->
+                <div class="col">
+                    <div class="card card-border mb-4">
+                        <div class="card-body">
+                            <h4 class="api-title i-color">Get on the <a href="/account">Account</a> page</h4>
+                            <span class="api-text">API Key</span>
+                        </div>
+                    </div>
+                </div><!-- ./col -->
+                <div class="col">
+                    <div class="card card-border mb-4">
+                        <div class="card-body">
+                            <h4 class="api-title w-color">JSON</h4>
+                            <span class="api-text">Response Format</span>
+                        </div>
+                    </div>
+                </div><!-- ./col -->
+            </div>
+        </section>
+        <section class="api-section">
+            <div class="card card-border">
+                <div class="card-body mb-0">
+                    <div class="row mb-0 pb-2">
+                        <div class="col-lg mb-3 mb-lg-0">
+                            <h3 class="api-title">Service List</h3>
+                            <p class="api-text">Service List API Responses</p>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="row">
+                                <div class="col mb-4">
+                                    <h6>key</h6>
+                                    <p>Your API key</p>
+                                </div>
+                                <div class="col mb-4">
+                                    <h6>action</h6>
+                                    <p>services</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="api-section">
+            <pre class="code card card-border card-body">[
+    {
+        "service": 1,
+        "name": "Followers",
+        "type": "Default",
+        "category": "First Category",
+        "rate": "0.90",
+        "min": "50",
+        "max": "10000",
+        "refill": true
+    },
+    {
+        "service": 2,
+        "name": "Comments",
+        "type": "Custom Comments",
+        "category": "Second Category",
+        "rate": "8",
+        "min": "10",
+        "max": "1500",
+        "refill": false
+    }
+]</pre>
+        </section>
+        <section class="api-section">
+            <div class="card card-border">
+                <div class="card-header">
+                          <div class="card-custom-title">
+                            <div class="row align-items-center">
+                              <div class="col-auto">
+                                <div class="d-head-icon">
+                                  <i class="ri-shopping-cart-2-line"></i>
+                                </div>
+                              </div>
+                              <div class="col">
+                                <h3 class="card-title">Add Order</h3>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3 mb-4">
+                            <h6>key</h6>
+                            <p>Your API key</p>
+                        </div>
+                        <div class="col-md-3 mb-4">
+                            <h6>action</h6>
+                            <p>add</p>
+                        </div>
+                        <div class="col-md-3 mb-4">
+                            <h6>service</h6>
+                            <p>Service ID</p>
+                        </div>
+                        <div class="col-md-3 mb-4">
+                            <h6>link</h6>
+                            <p>Link to page</p>
+                        </div>
+                        <div class="col-md-3 mb-4">
+                            <h6>usernames</h6>
+                            <p>Usernames list separated by \r\n or \n</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="api-section">
+            <pre class="code card card-border card-body">{
+    "order": 23501
+}</pre>
+        </section>
+        <section class="api-section">
+            <div class="card card-border">
+                <div class="card-header">
+                          <div class="card-custom-title">
+                            <div class="row align-items-center">
+                              <div class="col-auto">
+                                <div class="d-head-icon">
+                                  <i class="ri-loader-2-line"></i>
+                                </div>
+                              </div>
+                              <div class="col">
+                                <h3 class="card-title">Order Status</h3>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3 mb-4">
+                            <h6>key</h6>
+                            <p>Your API key</p>
+                        </div>
+                        <div class="col-md-3 mb-4">
+                            <h6>action</h6>
+                            <p>status</p>
+                        </div>
+                        <div class="col-md-3 mb-4">
+                            <h6>order</h6>
+                            <p>Order ID</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="api-section">
+            <pre class="code card card-border card-body">{
+    "charge": "0.27819",
+    "start_count": "3572",
+    "status": "Partial",
+    "remains": "157",
+    "currency": "USD"
+}</pre>
+        </section>
+
+        <section class="api-section">
+            <div class="card card-border">
+                <div class="card-header2">
+                    <h3 class="api-title mb-0">Multiple orders status</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3 mb-4">
+                            <h6>key</h6>
+                            <p>Your API key</p>
+                        </div>
+                        <div class="col-md-3 mb-4">
+                            <h6>action</h6>
+                            <p>status</p>
+                        </div>
+                        <div class="col-md-3 mb-4">
+                            <h6>orders</h6>
+                            <p>Order IDs separated by comma</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="api-section">
+            <pre class="code card card-border card-body">{
+    "1": {
+        "charge": "0.27819",
+        "start_count": "3572",
+        "status": "Partial",
+        "remains": "157",
+        "currency": "USD"
+    },
+    "10": {
+        "error": "Incorrect order ID"
+    },
+    "100": {
+        "charge": "1.44219",
+        "start_count": "234",
+        "status": "In progress",
+        "remains": "10",
+        "currency": "USD"
+    }
+}</pre>
+        </section>
+
+        <section class="api-section">
+            <div class="card card-border">
+                <div class="card-header2">
+                    <h3 class="api-title mb-0">Create refill</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3 mb-4">
+                            <h6>key</h6>
+                            <p>Your API key</p>
+                        </div>
+                        <div class="col-md-3 mb-4">
+                            <h6>action</h6>
+                            <p>refill</p>
+                        </div>
+                        <div class="col-md-3 mb-4">
+                            <h6>order</h6>
+                            <p>Order ID</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="api-section">
+            <pre class="code card card-border card-body">{
+    "refill": "1"
+}</pre>
+        </section>
+
+
+
+        <section class="api-section">
+            <div class="card card-border">
+                <div class="card-header2">
+                    <h3 class="api-title mb-0">Get refill status</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3 mb-4">
+                            <h6>key</h6>
+                            <p>Your API key</p>
+                        </div>
+                        <div class="col-md-3 mb-4">
+                            <h6>action</h6>
+                            <p>refill_status</p>
+                        </div>
+                        <div class="col-md-3 mb-4">
+                            <h6>refill</h6>
+                            <p>Refill ID</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="api-section">
+            <pre class="code card card-border card-body">{
+    "status": "Completed"
+}</pre>
+        </section>
+
+        <section class="api-section">
+            <div class="card card-border">
+                <div class="card-header">
+                          <div class="card-custom-title">
+                            <div class="row align-items-center">
+                              <div class="col-auto">
+                                <div class="d-head-icon">
+                                  <i class="ri-user-smile-line"></i>
+                                </div>
+                              </div>
+                              <div class="col">
+                                <h3 class="card-title">User Balance</h3>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3 mb-4">
+                            <h6>key</h6>
+                            <p>Your API key</p>
+                        </div>
+                        <div class="col-md-3 mb-4">
+                            <h6>action</h6>
+                            <p>balance</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="api-section">
+            <pre class="code card card-border card-body">{
+    "balance": "100.84292",
+    "currency": "USD"
+}</pre>
+        </section>
+
+
+    </div>
+</div>
+
+
+		
+
+<style>
+    .whatsapp-container{padding:24px}.whatsapp-button{width:60px;height:60px;bottom:40px;right:40px;background-color:#25d366;color:#FFF!important;border-radius:50px;text-align:center;font-size:30px;box-shadow:2px 2px 3px #999;display:flex;align-items:center;justify-content:center;text-decoration:none!important;-webkit-transition:all 0.3s ease;-moz-transition:all 0.3s ease;-o-transition:all 0.3s ease;-ms-transition:all 0.3s ease;transition:all 0.3s ease;transform:scale(0.9)}.whatsapp-button:hover{transform:scale(1);background-color:#1fcc5f}
+</style>
+{#<div class="integration-fixed integration-fixed__bottom-right">#}
+{#    <div class="whatsapp-container">#}
+{#        <a href="https://api.whatsapp.com/send?phone=201020739267" target="_blank" class="whatsapp-button">#}
+{#            <i class="fab fa-whatsapp"></i>#}
+{#        </a>#}
+{#    </div>#}
+{#</div>#}
+
+  		    <div class="mobile-navbar">
+        <div class="mobile-navbar-content">
+            <a href="/" class="mnc-item">
+                <div class="mnc-item-icon">
+                    <i class="far fa-box-heart"></i>
+                </div>
+                <div class="mnc-item-text">New Order</div>
+            </a>
+            <a href="/addfunds" class="mnc-item">
+                <div class="mnc-item-icon">
+                    <i class="ri-exchange-dollar-line"></i>
+                </div>
+                <div class="mnc-item-text">Add Funds</div>
+            </a>
+            <a href="/tickets" class="mnc-item">
+                <div class="mnc-item-icon">
+                    <i class="ri-customer-service-2-line"></i>
+                </div>
+                <div class="mnc-item-text">Ticket</div>
+            </a>
+            <a href="/services" class="mnc-item">
+                <div class="mnc-item-icon">
+                    <i class="ri-list-check-2"></i>
+                </div>
+                <div class="mnc-item-text">Services</div>
+            </a>
+        </div>
+    </div>
+
+
+
+
+{% include 'ftd.twig' %}
