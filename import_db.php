@@ -24,41 +24,42 @@ try {
 }
 
 
-echo "<h3>Automatic Database Import</h3>";
+echo "<h3>Automatic Database Import & Seeding</h3>";
 
-$sqlFile = __DIR__.'/schema.pg.sql';
+$files = [
+    'Schema' => __DIR__.'/schema.pg.sql',
+    'Seed'   => __DIR__.'/seed.pg.sql'
+];
 
-if (!file_exists($sqlFile)) {
-    die("Error: schema.pg.sql not found at " . $sqlFile);
-}
-
-$sql = file_get_contents($sqlFile);
-
-// Remove comments and split by semicolon
-// Note: This is a simple splitter and might struggle with complex SQL, 
-// but for a standard schema export it usually works.
-$queries = explode(';', $sql);
-
-$successCount = 0;
-$errorCount = 0;
-
-foreach ($queries as $query) {
-    $query = trim($query);
-    if (empty($query)) continue;
-    
-    try {
-        $conn->exec($query);
-        $successCount++;
-    } catch (PDOException $e) {
-        // Some errors like "table already exists" might be okay during a retry
-        echo "<div style='color:orange'>Skipped/Error on query: " . substr($query, 0, 50) . "...<br>";
-        echo "Reason: " . $e->getMessage() . "</div><br>";
-        $errorCount++;
+foreach ($files as $name => $sqlFile) {
+    if (!file_exists($sqlFile)) {
+        echo "<div style='color:red'>Error: $sqlFile not found. Skipping $name.</div><br>";
+        continue;
     }
+
+    echo "<h4>Importing $name...</h4>";
+    $sql = file_get_contents($sqlFile);
+    $queries = explode(';', $sql);
+
+    $successCount = 0;
+    $errorCount = 0;
+
+    foreach ($queries as $query) {
+        $query = trim($query);
+        if (empty($query)) continue;
+        
+        try {
+            $conn->exec($query);
+            $successCount++;
+        } catch (PDOException $e) {
+            // Some errors like "table already exists" or "duplicate key" might be okay
+            $errorCount++;
+        }
+    }
+
+    echo "Finished $name. Success: $successCount, Failed/Skipped: $errorCount<br>";
 }
 
-echo "<h4>Import Finished!</h4>";
-echo "Successfully executed: $successCount queries.<br>";
-echo "Errors/Skips: $errorCount<br>";
+echo "<h4>All Imports Finished!</h4>";
 echo "<br><a href='index.php'>Go to Homepage</a>";
 ?>
