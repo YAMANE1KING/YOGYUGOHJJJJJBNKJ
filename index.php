@@ -1,4 +1,5 @@
 <?php
+echo "DEBUG: index.php reached successfully.<br>";
 require __DIR__.'/vendor/autoload.php';
 use PHPMailer\PHPMailer\PHPMailer;
 $mail = new PHPMailer;
