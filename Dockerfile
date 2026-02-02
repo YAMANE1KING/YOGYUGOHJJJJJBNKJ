@@ -3,9 +3,10 @@ FROM php:8.2-apache
 # Install dependencies
 RUN apt-get update && apt-get install -y \
     libpq-dev \
+    libgmp-dev \
     git \
     unzip \
-    && docker-php-ext-install pdo pdo_pgsql pgsql
+    && docker-php-ext-install pdo pdo_pgsql pgsql gmp
 
 # Enable Apache Rewrite Module
 RUN a2enmod rewrite
