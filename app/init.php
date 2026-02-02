@@ -78,17 +78,29 @@ endif;
 
 
 
-$settings = $conn->prepare("SELECT * FROM settings WHERE id=:id");
-$settings->execute(array("id"=>1));
-$settings = $settings->fetch(PDO::FETCH_ASSOC);
+try {
+  $settings = $conn->prepare("SELECT * FROM settings WHERE id=:id");
+  $settings->execute(array("id"=>1));
+  $settings = $settings->fetch(PDO::FETCH_ASSOC);
 
-$general = $conn->prepare("SELECT * FROM General_options WHERE id=:id");
-$general->execute(array("id"=>1));
-$general = $general->fetch(PDO::FETCH_ASSOC);
+  $general = $conn->prepare("SELECT * FROM General_options WHERE id=:id");
+  $general->execute(array("id"=>1));
+  $general = $general->fetch(PDO::FETCH_ASSOC);
 
-$panel = $conn->prepare("SELECT * FROM panel_info WHERE panel_id=:id");
-$panel->execute(array("id"=>1));
-$panel = $panel->fetch(PDO::FETCH_ASSOC);
+  $panel = $conn->prepare("SELECT * FROM panel_info WHERE panel_id=:id");
+  $panel->execute(array("id"=>1));
+  $panel = $panel->fetch(PDO::FETCH_ASSOC);
+  
+  if (!$settings || !$general || !$panel) {
+      throw new Exception("Core settings not found in database. Please ensure you have imported the SQL schema and the 'settings', 'General_options', and 'panel_info' tables have an entry with ID 1.");
+  }
+} catch (Exception $e) {
+  die("<div style='padding:20px; background:#fff5f5; color:#c53030; border:1px solid #feb2b2; font-family:sans-serif;'>
+        <strong>Database Error:</strong> " . $e->getMessage() . "
+        <br><br>
+        <em>Tip: This usually means you haven't imported the SQL file into your database or the tables are empty.</em>
+      </div>");
+}
 
 
 define('THEME', $settings["site_theme"]);
