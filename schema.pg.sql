@@ -575,3 +575,11 @@ CREATE TABLE updates (
     date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     description VARCHAR(225) NOT NULL
 );
+
+CREATE TABLE invoices (
+    invoice_id SERIAL PRIMARY KEY,
+    client_id INTEGER REFERENCES clients(client_id),
+    invoice_amount DECIMAL(21,7) DEFAULT 0,
+    invoice_status VARCHAR(50) DEFAULT 'Unpaid',
+    invoice_create_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
