@@ -4,6 +4,7 @@ ini_set('display_errors', 1);
 
 echo "<h2>Deployment Verification Script</h2>";
 echo "Current Time: " . date('Y-m-d H:i:s') . "<br>";
+echo "Build Time: " . (getenv('REBUILD_TIME') ?: 'N/A') . "<br>";
 echo "Document Root: " . $_SERVER['DOCUMENT_ROOT'] . "<br>";
 echo "Current Directory: " . __DIR__ . "<br>";
 
