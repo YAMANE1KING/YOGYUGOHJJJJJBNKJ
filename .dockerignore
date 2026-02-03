@@ -2,11 +2,8 @@ vendor
 .git
 .github
 .vscode
-*.sql
+# *.sql (removed to allow essential schema files)
 db_test.php
-db_test.php
-seed.pg.sql
-schema.pg.sql
 closestar.sql
 Installation Guide.txt
 README.md
