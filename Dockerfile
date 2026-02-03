@@ -14,6 +14,8 @@ RUN a2enmod rewrite
 
 # Copy application files
 COPY . /var/www/html/
+COPY schema.pg.sql /var/www/html/schema.pg.sql
+COPY seed.pg.sql /var/www/html/seed.pg.sql
 
 # Force Rebuild: 2026-02-03 05:40
 ENV REBUILD_TIME=2026-02-03_05-40
