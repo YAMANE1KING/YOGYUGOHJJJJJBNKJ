@@ -15,6 +15,9 @@ RUN a2enmod rewrite
 # Copy application files
 COPY . /var/www/html/
 
+# Force Rebuild: 2026-02-03 05:40
+ENV REBUILD_TIME=2026-02-03_05-40
+
 # Set working directory
 WORKDIR /var/www/html
 
